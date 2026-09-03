@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — KhayriPaint</title>
+<meta name="description" content="Contactez KhayriPaint à Kairouan pour un devis ou un échantillon de finition décorative Rivapaint.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="entete">
+  <div class="conteneur">
+    <a href="index.html" class="marque">Khayri<span>Paint</span></a>
+    <nav class="nav-principale" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="produits.html">Produits</a>
+      <a href="apropos.html">À propos</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+    </nav>
+    <button class="nav-bascule" aria-label="Ouvrir le menu">☰</button>
+  </div>
+</header>
+
+<main>
+
+  <section class="section" style="padding-bottom: 1rem;">
+    <div class="conteneur">
+      <div class="section-entete">
+        <h1>Parlons de votre projet</h1>
+        <p>Décrivez-nous votre espace et la finition Rivapaint qui vous intéresse : nous revenons vers vous sous 48 heures avec une proposition et, si besoin, un rendez-vous pour un échantillon.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="conteneur">
+      <div class="mise-en-page-contact">
+
+        <!-- Formulaire -->
+        <form id="formulaire-contact" novalidate>
+          <div class="champ">
+            <label for="nom">Nom et prénom</label>
+            <input type="text" id="nom" name="nom" required autocomplete="name">
+          </div>
+          <div class="champ">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required autocomplete="email">
+          </div>
+          <div class="champ">
+            <label for="telephone">Téléphone</label>
+            <input type="tel" id="telephone" name="telephone" autocomplete="tel">
+          </div>
+          <div class="champ">
+            <label for="finition">Finition qui vous intéresse</label>
+            <input type="text" id="finition" name="finition" placeholder="Sabulador, Anticerra, Stuc, Artico…">
+          </div>
+          <div class="champ">
+            <label for="message">Votre message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="bouton bouton-plein">Envoyer la demande</button>
+          <p id="confirmation-formulaire" role="status" style="margin-top: 1rem; display: none; color: var(--or-clair);"></p>
+        </form>
+
+        <!-- Coordonnées -->
+        <div>
+          <div class="vignette" style="height: 220px; margin-bottom: 1.8rem; overflow: hidden; border-radius: var(--rayon);">
+            <img src="images/texture-stuc-bronze.jpg" alt="Texture de finition Rivapaint, ton bronze doré" style="width:100%; height:100%; object-fit:cover;">
+          </div>
+          <dl class="bloc-coordonnees">
+            <dt>Adresse</dt>
+            <dd><!-- TODO : compléter avec l'adresse exacte du showroom --> Zone industrielle, Kairouan, Tunisie</dd>
+            <dt>Téléphone</dt>
+            <dd><!-- TODO : remplacer par le numéro réel --> +216 00 000 000</dd>
+            <dt>E-mail</dt>
+            <dd><!-- TODO : remplacer par l'adresse e-mail réelle --> contact@khayripaint.tn</dd>
+            <dt>Horaires</dt>
+            <dd>Lun – Ven, 9h00 – 18h00<br>Samedi, 9h00 – 13h00</dd>
+          </dl>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pied">
+  <div class="conteneur">
+    <span class="marque" style="font-size: 1.2rem;">Khayri<span>Paint</span></span>
+    <nav class="pied-liens" aria-label="Liens de pied de page">
+      <a href="produits.html">Produits</a>
+      <a href="apropos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <span class="mentions">© 2026 KhayriPaint — Kairouan. Tous droits réservés.</span>
+  </div>
+</footer>
+
+<script>
+  // Ce formulaire n'envoie rien pour le moment : il n'y a pas de backend.
+  // Pour le rendre fonctionnel, relier son action à un service comme Formspree,
+  // ou remplacer la logique ci-dessous par un appel à votre propre API.
+  document.getElementById('formulaire-contact').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var confirmation = document.getElementById('confirmation-formulaire');
+    confirmation.textContent = 'Merci — votre demande a bien été préparée. (Formulaire à relier à un service d\'envoi pour un fonctionnement réel.)';
+    confirmation.style.display = 'block';
+    this.reset();
+  });
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>

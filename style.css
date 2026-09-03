@@ -1,0 +1,463 @@
+/* ==========================================================================
+   KHAYRIPAINT — feuille de style partagée
+   Peintures décoratives italiennes (gamme Rivapaint) — Kairouan
+   ========================================================================== */
+
+:root {
+  /* Couleurs */
+  --noir: #120f0c;
+  --noir-panneau: #1a1512;
+  --or: #b9932e;
+  --or-clair: #e4c77a;
+  --ivoire: #ede7da;
+  --enduit: #8c6a4a;
+  --pierre: #a79c8c;
+  --ligne: rgba(237, 231, 218, 0.14);
+
+  /* Typographie */
+  --police-titre: "Cormorant Garamond", "Times New Roman", serif;
+  --police-texte: "Work Sans", "Segoe UI", sans-serif;
+
+  /* Échelle */
+  --marge: clamp(1.5rem, 5vw, 5rem);
+  --rayon: 2px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--noir);
+  color: var(--ivoire);
+  font-family: var(--police-texte);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--police-titre);
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+  color: var(--ivoire);
+}
+
+h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); font-weight: 500; }
+h2 { font-size: clamp(1.9rem, 3.4vw, 2.7rem); }
+h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); }
+
+p { color: var(--pierre); max-width: 62ch; }
+
+a { color: inherit; text-decoration: none; }
+
+img { max-width: 100%; display: block; }
+
+.conteneur {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 var(--marge);
+}
+
+/* Focus visible pour l'accessibilité clavier */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--or-clair);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* ---------- En-tête ---------- */
+.entete {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(18, 15, 12, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--ligne);
+}
+
+.entete .conteneur {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 84px;
+}
+
+.marque {
+  font-family: var(--police-titre);
+  font-size: 1.6rem;
+  letter-spacing: 0.02em;
+  color: var(--ivoire);
+}
+
+.marque span { color: var(--or); }
+
+.nav-principale {
+  display: flex;
+  gap: clamp(1.2rem, 2vw, 2.4rem);
+}
+
+.nav-principale a {
+  font-size: 0.95rem;
+  color: var(--pierre);
+  padding: 0.3em 0;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-principale a:hover,
+.nav-principale a[aria-current="page"] {
+  color: var(--or-clair);
+  border-color: var(--or);
+}
+
+.nav-bascule {
+  display: none;
+  background: none;
+  border: 1px solid var(--ligne);
+  color: var(--ivoire);
+  width: 42px;
+  height: 42px;
+  border-radius: var(--rayon);
+  font-size: 1.2rem;
+}
+
+/* ---------- Boutons ---------- */
+.bouton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.85em 1.7em;
+  font-family: var(--police-texte);
+  font-size: 0.95rem;
+  border-radius: var(--rayon);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.bouton-plein {
+  background: var(--or);
+  color: var(--noir);
+}
+.bouton-plein:hover { background: var(--or-clair); }
+
+.bouton-contour {
+  border-color: var(--ligne);
+  color: var(--ivoire);
+}
+.bouton-contour:hover { border-color: var(--or); color: var(--or-clair); }
+
+/* ---------- Texture décorative (simule un enduit / grain de pierre) ---------- */
+.texture {
+  background-color: var(--noir-panneau);
+  background-image:
+    radial-gradient(circle at 18% 25%, rgba(185, 147, 46, 0.20) 0, transparent 42%),
+    radial-gradient(circle at 82% 70%, rgba(140, 106, 74, 0.28) 0, transparent 48%),
+    radial-gradient(circle at 50% 100%, rgba(237, 231, 218, 0.05) 0, transparent 60%),
+    repeating-linear-gradient(115deg, rgba(237,231,218,0.035) 0 2px, transparent 2px 6px);
+}
+
+.texture-marbre {
+  background-color: #100d0b;
+  background-image:
+    linear-gradient(128deg, rgba(237,231,218,0.10) 0%, transparent 22%, transparent 45%, rgba(185,147,46,0.14) 55%, transparent 70%, rgba(237,231,218,0.06) 100%),
+    linear-gradient(35deg, transparent 40%, rgba(237,231,218,0.07) 42%, transparent 44%),
+    linear-gradient(95deg, transparent 60%, rgba(185,147,46,0.10) 62%, transparent 64%);
+}
+
+.texture-sable {
+  background-color: #150f0a;
+  background-image: radial-gradient(rgba(237,231,218,0.10) 1px, transparent 1.4px);
+  background-size: 7px 7px;
+}
+
+.texture-stuc {
+  background-color: #171310;
+  background-image:
+    radial-gradient(circle at 30% 30%, rgba(237,231,218,0.08) 0, transparent 30%),
+    radial-gradient(circle at 70% 60%, rgba(237,231,218,0.06) 0, transparent 35%),
+    radial-gradient(circle at 45% 80%, rgba(185,147,46,0.12) 0, transparent 30%);
+}
+
+/* ---------- Hero ---------- */
+.heros {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: stretch;
+  min-height: 86vh;
+}
+
+.heros-texte {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--marge);
+}
+
+.heros-texte .amorce {
+  color: var(--or);
+  font-size: 1.05rem;
+  margin-bottom: 1.2rem;
+  max-width: 46ch;
+}
+
+.heros-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.heros-panneau {
+  position: relative;
+  overflow: hidden;
+  border-left: 1px solid var(--ligne);
+}
+
+.heros-panneau .etiquette {
+  position: absolute;
+  left: var(--marge);
+  bottom: var(--marge);
+  font-family: var(--police-titre);
+  font-size: 1.4rem;
+  color: var(--ivoire);
+}
+
+.heros-panneau .etiquette small {
+  display: block;
+  font-family: var(--police-texte);
+  font-size: 0.82rem;
+  color: var(--or-clair);
+  margin-top: 0.3em;
+}
+
+/* ---------- Sections génériques ---------- */
+.section {
+  padding: clamp(3.5rem, 8vw, 7rem) 0;
+}
+
+.section-entete {
+  max-width: 60ch;
+  margin-bottom: 3rem;
+}
+
+.section-entete p { margin-top: 0.8rem; }
+
+.diviseur {
+  height: 1px;
+  background: var(--ligne);
+  border: none;
+  margin: 0;
+}
+
+/* ---------- Grille de finitions ---------- */
+.grille-finitions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--ligne);
+  border: 1px solid var(--ligne);
+}
+
+@media (max-width: 1100px) and (min-width: 901px) {
+  .grille-finitions { grid-template-columns: repeat(2, 1fr); }
+}
+
+.carte-finition {
+  background: var(--noir);
+  display: flex;
+  flex-direction: column;
+}
+
+.carte-finition .vignette {
+  height: 220px;
+  overflow: hidden;
+}
+
+.vignette img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.carte-finition .corps {
+  padding: 1.8rem;
+}
+
+.carte-finition h3 { margin-bottom: 0.5rem; }
+.carte-finition p { font-size: 0.95rem; }
+
+/* ---------- Bandeau atouts ---------- */
+.bandeau-atouts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.atout .chiffre {
+  font-family: var(--police-titre);
+  font-size: 2.6rem;
+  color: var(--or);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+/* ---------- Étapes (À propos) ---------- */
+.liste-etapes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--ligne);
+}
+
+.liste-etapes li {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 2rem;
+  padding: 1.8rem 0;
+  border-bottom: 1px solid var(--ligne);
+}
+
+.liste-etapes .num {
+  font-family: var(--police-titre);
+  font-size: 1.8rem;
+  color: var(--or);
+}
+
+/* ---------- Formulaire de contact ---------- */
+.mise-en-page-contact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.champ {
+  margin-bottom: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.champ label {
+  font-size: 0.88rem;
+  color: var(--pierre);
+}
+
+.champ input,
+.champ textarea {
+  background: var(--noir-panneau);
+  border: 1px solid var(--ligne);
+  border-radius: var(--rayon);
+  padding: 0.85em 1em;
+  color: var(--ivoire);
+  font-family: var(--police-texte);
+  font-size: 0.98rem;
+}
+
+.champ input:focus,
+.champ textarea:focus {
+  border-color: var(--or);
+}
+
+.duo-teintes {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.duo-teintes figure {
+  margin: 0;
+  flex: 1;
+}
+
+.duo-teintes img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  border-radius: var(--rayon);
+  border: 1px solid var(--ligne);
+}
+
+.duo-teintes figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--pierre);
+}
+
+.bloc-coordonnees dt {
+  color: var(--or-clair);
+  font-size: 0.85rem;
+  margin-top: 1.4rem;
+}
+
+.bloc-coordonnees dd {
+  margin: 0.25rem 0 0;
+  color: var(--ivoire);
+}
+
+/* ---------- Pied de page ---------- */
+.pied {
+  border-top: 1px solid var(--ligne);
+  padding: 3rem 0;
+}
+
+.pied .conteneur {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.pied-liens {
+  display: flex;
+  gap: 1.6rem;
+}
+
+.pied-liens a { color: var(--pierre); font-size: 0.9rem; }
+.pied-liens a:hover { color: var(--or-clair); }
+
+.mentions {
+  color: var(--pierre);
+  font-size: 0.8rem;
+}
+
+/* ---------- Utilitaires ---------- */
+.centre { text-align: center; margin-left: auto; margin-right: auto; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .heros { grid-template-columns: 1fr; min-height: auto; }
+  .heros-panneau { height: 340px; }
+  .grille-finitions { grid-template-columns: 1fr; }
+  .bandeau-atouts { grid-template-columns: 1fr; gap: 1.8rem; }
+  .mise-en-page-contact { grid-template-columns: 1fr; gap: 2.5rem; }
+  .nav-principale {
+    display: none;
+    position: absolute;
+    top: 84px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: var(--noir);
+    border-bottom: 1px solid var(--ligne);
+    padding: 1.2rem var(--marge) 1.8rem;
+    gap: 1rem;
+  }
+  .nav-principale.ouverte { display: flex; }
+  .nav-bascule { display: block; }
+}
